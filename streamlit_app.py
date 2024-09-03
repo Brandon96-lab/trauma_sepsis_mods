@@ -97,8 +97,7 @@ with col1:
             explainer = shap.TreeExplainer(model)  
             shap_values = explainer(input_data)  
             
-            # 创建 SHAP 瀑布图  
-            st.subheader("SHAP Waterfall Plot")  
+            # 创建 SHAP 瀑布图 
             fig, ax = plt.subplots(figsize=(10, 6))  
             
             # For binary classification, we want to explain the positive class (index 1)  
