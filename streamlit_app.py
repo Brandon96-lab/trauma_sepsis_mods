@@ -12,17 +12,31 @@ st.set_page_config(page_title="MODS Prediction in Trauma Patients with Sepsis", 
 st.markdown("""
 <style>
     .main {
-        padding: 2rem 3rem;
+        padding: 1rem 2rem;
     }
     .stButton>button {
         width: 100%;
     }
     .stAlert {
-        padding: 1rem;
-        margin-bottom: 1rem;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
     }
-    h1, h2, h3 {
-        color: #0e4c92;
+    h1 {  
+        color: #0e4c92;  
+        font-size: 1.8rem;  
+        margin-bottom: 0.5rem;  
+    }  
+    h2 {  
+        color: #0e4c92;  
+        font-size: 1.4rem;  
+        margin-top: 0.5rem;  
+        margin-bottom: 0.5rem;  
+    }  
+    h3 {  
+        color: #0e4c92;  
+        font-size: 1.2rem;  
+        margin-top: 0.5rem;  
+        margin-bottom: 0.5rem;  
     }
 </style>
 """, unsafe_allow_html=True)
@@ -83,7 +97,7 @@ with col1:
             shap_values = explainer.shap_values(input_data)
             
             # Create SHAP summary plot
-            fig, ax = plt.subplots(figsize=(4, 2))
+            fig, ax = plt.subplots(figsize=(6, 3))
             shap.summary_plot(shap_values[1], input_data, plot_type="bar", show=False)
             ax.set_xlabel("SHAP Value (impact on model output)")
             ax.set_ylabel("Feature")
@@ -93,7 +107,7 @@ with col1:
 
             # Create static SHAP force plot
             st.subheader("SHAP Force Plot")
-            fig, ax = plt.subplots(figsize=(4, 2))
+            fig, ax = plt.subplots(figsize=(6, 3))
             shap.plots._waterfall.waterfall_legacy(explainer.expected_value[1], shap_values[1][0], feature_names=input_data.columns, max_display=10, show=False)
             plt.title("SHAP Force Plot")
             st.pyplot(fig)
