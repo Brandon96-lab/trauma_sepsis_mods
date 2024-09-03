@@ -113,7 +113,7 @@ with col1:
                 fig = plt.gcf()  
                 
                 # 调整图形大小  
-                fig.set_size_inches(8, 6)  # 调整这里的数值来改变图表大小  
+                fig.set_size_inches(12, 8)  # 调整这里的数值来改变图表大小  
                 
                 # 调整图表布局  
                 plt.tight_layout()  
