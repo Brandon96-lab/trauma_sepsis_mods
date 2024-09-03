@@ -104,7 +104,7 @@ st.markdown("---")
 st.warning("""
 **DISCLAIMER:**
 
-This online calculator is freely accessible and utilizes an advanced random forest algorithm for predicting Multiple Organ Dysfunction Syndrome (MODS) in trauma patients with sepsis. While the model has demonstrated good performance in validation studies, it is crucial to emphasize that this tool was developed solely for research purposes.
+This online calculator is freely accessible and utilizes the random forest algorithm for predicting Multiple Organ Dysfunction Syndrome (MODS) in trauma patients with sepsis. The tool was developed solely for research purposes.
 
 Key points to consider:
 - The model's predictions should not be the sole basis for clinical decisions.
