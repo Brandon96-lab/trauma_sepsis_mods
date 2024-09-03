@@ -92,43 +92,43 @@ with col1:
             else:
                 st.error("High Risk of MODS")
             
-        # SHAP 解释  
-        st.subheader("Model Explanation")  
-        explainer = shap.TreeExplainer(model)  
-        shap_values = explainer(input_data)  
-        
-        # 创建 SHAP 瀑布图  
-        st.subheader("SHAP Waterfall Plot")  
-        fig, ax = plt.subplots(figsize=(10, 6))  
-        
-        # For binary classification, we want to explain the positive class (index 1)  
-        output_to_explain = 1  
-        
-        # Use a scalar base value  
-        base_value = shap_values.base_values[0, output_to_explain]  
-        
-        st.write("shap_values.base_values shape:", shap_values.base_values.shape)  
-        st.write("shap_values.values shape:", shap_values.values.shape)  
-        st.write("shap_values.data shape:", shap_values.data.shape)  
-        st.write("input_data shape:", input_data.shape)  
-        
-        # Ensure data is in the correct format  
-        feature_data = input_data.iloc[0].values if isinstance(input_data, pd.DataFrame) else input_data[0]  
-        
-        try:  
-            shap.plots.waterfall(shap.Explanation(values=shap_values.values[0, :, output_to_explain],  
-                                                  base_values=base_value,  
-                                                  data=feature_data,  
-                                                  feature_names=input_data.columns.tolist()),  
-                                 max_display=10, show=False)  
-            st.pyplot(fig)  
-        except Exception as e:  
-            st.error(f"Error in creating SHAP plot: {str(e)}")  
-            st.write("shap_values.values[0, :, output_to_explain]:", shap_values.values[0, :, output_to_explain])  
-            st.write("feature_data:", feature_data)  
-            st.write("input_data.columns:", input_data.columns.tolist())  
-        
-        plt.close(fig)  
+            # SHAP 解释  
+            st.subheader("Model Explanation")  
+            explainer = shap.TreeExplainer(model)  
+            shap_values = explainer(input_data)  
+            
+            # 创建 SHAP 瀑布图  
+            st.subheader("SHAP Waterfall Plot")  
+            fig, ax = plt.subplots(figsize=(10, 6))  
+            
+            # For binary classification, we want to explain the positive class (index 1)  
+            output_to_explain = 1  
+            
+            # Use a scalar base value  
+            base_value = shap_values.base_values[0, output_to_explain]  
+            
+            #st.write("shap_values.base_values shape:", shap_values.base_values.shape)  
+            #st.write("shap_values.values shape:", shap_values.values.shape)  
+            #st.write("shap_values.data shape:", shap_values.data.shape)  
+            #st.write("input_data shape:", input_data.shape)  
+            
+            # Ensure data is in the correct format  
+            feature_data = input_data.iloc[0].values if isinstance(input_data, pd.DataFrame) else input_data[0]  
+            
+            try:  
+                shap.plots.waterfall(shap.Explanation(values=shap_values.values[0, :, output_to_explain],  
+                                                      base_values=base_value,  
+                                                      data=feature_data,  
+                                                      feature_names=input_data.columns.tolist()),  
+                                     max_display=10, show=False)  
+                st.pyplot(fig)  
+            except Exception as e:  
+                st.error(f"Error in creating SHAP plot: {str(e)}")  
+                st.write("shap_values.values[0, :, output_to_explain]:", shap_values.values[0, :, output_to_explain])  
+                st.write("feature_data:", feature_data)  
+                st.write("input_data.columns:", input_data.columns.tolist())  
+            
+            plt.close(fig)  
 
 # Disclaimer (at the bottom)
 st.markdown("---")
