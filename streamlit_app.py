@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -94,22 +95,13 @@ with col1:
             # SHAP explanation
             st.subheader("Model Explanation")
             explainer = shap.TreeExplainer(model)
-            shap_values = explainer.shap_values(input_data)
+            shap_values = explainer(input_data)
             
-            # Create SHAP summary plot
-            # fig, ax = plt.subplots(figsize=(6, 3))
-            # shap.summary_plot(shap_values[1], input_data, plot_type="bar", show=False)
-            # ax.set_xlabel("SHAP Value (impact on model output)")
-            # ax.set_ylabel("Feature")
-            # ax.set_title("Feature Importance")
-            # st.pyplot(fig)
-            # plt.close(fig)
-
-            # Create static SHAP force plot
-            st.subheader("SHAP Force Plot")
-            fig, ax = plt.subplots(figsize=(4, 2))
-            shap.plots._waterfall.waterfall_legacy(explainer.expected_value[1], shap_values[1][0], feature_names=input_data.columns, max_display=10, show=False)
-            plt.title("SHAP Force Plot")
+            # Create SHAP waterfall plot
+            st.subheader("SHAP Waterfall Plot")
+            fig, ax = plt.subplots(figsize=(10, 6))
+            shap.plots.waterfall(shap_values[0], max_display=10, show=False)
+            plt.title("SHAP Waterfall Plot")
             st.pyplot(fig)
             plt.close(fig)
 
