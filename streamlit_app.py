@@ -83,7 +83,7 @@ with col1:
             shap_values = explainer.shap_values(input_data)
             
             # Create SHAP summary plot
-            fig, ax = plt.subplots(figsize=(10, 6))
+            fig, ax = plt.subplots(figsize=(8, 4))
             shap.summary_plot(shap_values[1], input_data, plot_type="bar", show=False)
             ax.set_xlabel("SHAP Value (impact on model output)")
             ax.set_ylabel("Feature")
@@ -93,7 +93,7 @@ with col1:
 
             # Create static SHAP force plot
             st.subheader("SHAP Force Plot")
-            fig, ax = plt.subplots(figsize=(12, 3))
+            fig, ax = plt.subplots(figsize=(8, 4))
             shap.plots._waterfall.waterfall_legacy(explainer.expected_value[1], shap_values[1][0], feature_names=input_data.columns, max_display=10, show=False)
             plt.title("SHAP Force Plot")
             st.pyplot(fig)
