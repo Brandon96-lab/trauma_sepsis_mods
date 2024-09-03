@@ -112,7 +112,7 @@ with col1:
                                               data=shap_values.data,  
                                               feature_names=input_data.columns.tolist()),  
                              max_display=10, show=False)  
-        plt.title("SHAP Waterfall Plot")  
+        #plt.title("SHAP Waterfall Plot")  
         st.pyplot(fig)  
         plt.close(fig)
 
