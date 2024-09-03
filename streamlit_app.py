@@ -101,24 +101,27 @@ with col1:
             col_shap, _ = st.columns([2, 1])  
             
             with col_shap:  
-                # 创建一个新的图形对象并设置大小  
-                fig, ax = plt.subplots(figsize=(8, 4))  # 调整这里的数值来改变图表大小  
-            
                 # 创建 SHAP 瀑布图  
-                shap.plots.waterfall(shap.Explanation(values=shap_values.values[0, :, 1],  
-                                                      base_values=shap_values.base_values[0, 1],  
-                                                      data=input_data.iloc[0].values,  
-                                                      feature_names=input_data.columns.tolist()),  
-                                     max_display=8,  # 减少显示的特征数量  
-                                     show=False)  # 使用我们创建的轴对象  
+                shap_plot = shap.plots.waterfall(shap.Explanation(values=shap_values.values[0, :, 1],  
+                                                                  base_values=shap_values.base_values[0, 1],  
+                                                                  data=input_data.iloc[0].values,  
+                                                                  feature_names=input_data.columns.tolist()),  
+                                                 max_display=8,  # 减少显示的特征数量  
+                                                 show=False)  
             
+                # 获取当前图形  
+                fig = plt.gcf()  
+                
+                # 调整图形大小  
+                fig.set_size_inches(6, 4)  # 调整这里的数值来改变图表大小  
+                
                 # 调整图表布局  
                 plt.tight_layout()  
             
                 # 使用 Streamlit 显示图表  
                 st.pyplot(fig, use_container_width=True)  
             
-            plt.close(fig)   
+            plt.close(fig)  
 
 # Disclaimer (at the bottom)
 st.markdown("---")
