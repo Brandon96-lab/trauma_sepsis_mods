@@ -108,7 +108,7 @@ with col1:
         base_value = shap_values.base_values[0]  
         st.write("shap_values.base_values:", shap_values.base_values)  
         st.write("shap_values.values:", shap_values.values[0, :, output_to_explain])
-        st.write("shap_values.values:", shap_values.data)
+        st.write("shap_values.data:", shap_values.data)
         shap.plots.waterfall(shap.Explanation(values=shap_values.values[0, :, output_to_explain],  
                                               base_values=base_value[1],  
                                               data=shap_values.data,  
