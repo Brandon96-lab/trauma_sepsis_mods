@@ -107,9 +107,9 @@ with col1:
         # Use a scalar base value  
         base_value = shap_values.base_values[0]  
         
-        shap.plots.waterfall(shap.Explanation(values=shap_values.values[0, :, output_to_explain],  
-                                              base_values=base_value,  
-                                              data=input_data.iloc[0, :],  
+        shap.plots.waterfall(shap.Explanation(values=shap_values.values[:, output_to_explain],  
+                                              base_values=base_value[1],  
+                                              data=shap_values.data,  
                                               feature_names=input_data.columns.tolist()),  
                              max_display=10, show=False)  
         
