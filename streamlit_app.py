@@ -98,7 +98,7 @@ with col1:
             shap_values = explainer(input_data)  
             
             # 创建 SHAP 瀑布图 
-            fig, ax = plt.subplots(figsize=(10, 6))  
+            fig, ax = plt.subplots(figsize=(8, 4))  
             
             # For binary classification, we want to explain the positive class (index 1)  
             output_to_explain = 1  
