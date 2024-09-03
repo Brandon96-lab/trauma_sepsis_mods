@@ -110,8 +110,7 @@ with col1:
                                                       data=input_data.iloc[0].values,  
                                                       feature_names=input_data.columns.tolist()),  
                                      max_display=8,  # 减少显示的特征数量  
-                                     show=False,  
-                                     ax=ax)  # 使用我们创建的轴对象  
+                                     show=False)  # 使用我们创建的轴对象  
             
                 # 调整图表布局  
                 plt.tight_layout()  
