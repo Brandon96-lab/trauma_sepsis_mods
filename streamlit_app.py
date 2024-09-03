@@ -71,8 +71,8 @@ with col1:
         # Prepare the input data
         input_data = pd.DataFrame([[age, weight, invasive_line, vasopressor, 
                                     saps_ii, chest_ais, mech_ventilation, platelet_count]],
-                                  columns=['Age', 'Weight', 'Invasive Line', 'Vasopressor',
-                                           'SAPS II', 'Chest AIS', 'Mechanical Ventilation', 'Platelet Count'])
+                                  columns=['admission_age', 'weight', 'invasive_line_1stday', 'vaso_1stday',
+       'sapsii_1stday', 'mxaisbr_Chest', 'mechvent', 'platelets_min'])
         
         # Convert categorical variables
         input_data = input_data.replace({"No": 0, "Yes": 1})
@@ -92,27 +92,27 @@ with col1:
             else:
                 st.error("High Risk of MODS")
             
-        # SHAP explanation  
+        # SHAP 解释  
         st.subheader("Model Explanation")  
         explainer = shap.TreeExplainer(model)  
         shap_values = explainer(input_data)  
         
-        # For binary classification, we want to explain the positive class (index 1)  
-        output_to_explain = 1  
-        
-        # Create SHAP waterfall plot  
+        # 创建 SHAP 瀑布图  
         st.subheader("SHAP Waterfall Plot")  
         fig, ax = plt.subplots(figsize=(10, 6))  
         
-        # Use a scalar base value  
-        base_value = shap_values.base_values[output_to_explain]  
+        # For binary classification, we want to explain the positive class (index 1)  
+        output_to_explain = 1  
         
-        shap.plots.waterfall(shap.Explanation(values=shap_values.values[:, output_to_explain],   
-                                              base_values=base_value[1],  
-                                              data=shap_values.data,  
+        # Use a scalar base value  
+        base_value = shap_values.base_values[0]  
+        
+        shap.plots.waterfall(shap.Explanation(values=shap_values.values[0, :, output_to_explain],  
+                                              base_values=base_value,  
+                                              data=input_data.iloc[0, :],  
                                               feature_names=input_data.columns.tolist()),  
                              max_display=10, show=False)  
-        #plt.title("SHAP Waterfall Plot")  
+        
         st.pyplot(fig)  
         plt.close(fig)
 
