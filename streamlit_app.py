@@ -44,7 +44,7 @@ with col1:
     st.subheader("Patient Parameters")
     
     age = st.slider("Age", 18, 100, 50)
-    weight = st.slider("Weight (kg)", 40, 200, 70)
+    weight = st.slider("Weight (kg)", 20, 200, 70)
     invasive_line = st.selectbox("Invasive Line", ("No", "Yes"))
     vasopressor = st.selectbox("Vasopressor Used", ("No", "Yes"))
     saps_ii = st.slider("SAPS II Score", 0, 163, 30)
