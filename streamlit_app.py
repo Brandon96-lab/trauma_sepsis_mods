@@ -107,7 +107,7 @@ with col1:
 
             # Create static SHAP force plot
             st.subheader("SHAP Force Plot")
-            fig, ax = plt.subplots(figsize=(6, 3))
+            fig, ax = plt.subplots(figsize=(4, 2))
             shap.plots._waterfall.waterfall_legacy(explainer.expected_value[1], shap_values[1][0], feature_names=input_data.columns, max_display=10, show=False)
             plt.title("SHAP Force Plot")
             st.pyplot(fig)
