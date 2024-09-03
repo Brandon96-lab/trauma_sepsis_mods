@@ -107,7 +107,7 @@ with col1:
         # Use a scalar base value  
         base_value = shap_values.base_values[0]  
         st.write("shap_values.base_values:", shap_values.base_values)  
-        st.write("shap_values.values:", shap_values.values)
+        st.write("shap_values.values:", shap_values.values.shape)
         st.write("shap_values.values:", shap_values.data)
         shap.plots.waterfall(shap.Explanation(values=shap_values.values[:, output_to_explain],  
                                               base_values=base_value[1],  
