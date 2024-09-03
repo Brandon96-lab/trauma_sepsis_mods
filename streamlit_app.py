@@ -97,13 +97,13 @@ with col1:
             shap_values = explainer.shap_values(input_data)
             
             # Create SHAP summary plot
-            fig, ax = plt.subplots(figsize=(6, 3))
-            shap.summary_plot(shap_values[1], input_data, plot_type="bar", show=False)
-            ax.set_xlabel("SHAP Value (impact on model output)")
-            ax.set_ylabel("Feature")
-            ax.set_title("Feature Importance")
-            st.pyplot(fig)
-            plt.close(fig)
+            # fig, ax = plt.subplots(figsize=(6, 3))
+            # shap.summary_plot(shap_values[1], input_data, plot_type="bar", show=False)
+            # ax.set_xlabel("SHAP Value (impact on model output)")
+            # ax.set_ylabel("Feature")
+            # ax.set_title("Feature Importance")
+            # st.pyplot(fig)
+            # plt.close(fig)
 
             # Create static SHAP force plot
             st.subheader("SHAP Force Plot")
