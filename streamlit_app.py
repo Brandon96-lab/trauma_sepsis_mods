@@ -102,7 +102,7 @@ with col1:
             
             with col_shap:  
                 # 创建一个新的图形对象并设置大小  
-                fig, ax = plt.subplots(figsize=(6, 4))  # 调整这里的数值来改变图表大小  
+                fig, ax = plt.subplots(figsize=(8, 4))  # 调整这里的数值来改变图表大小  
             
                 # 创建 SHAP 瀑布图  
                 shap.plots.waterfall(shap.Explanation(values=shap_values.values[0, :, 1],  
